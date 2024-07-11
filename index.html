@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slimecrew Frontier Modpack</title>
     <style>
-        /* Updated CSS for slime-themed styling with animations */
+        /* Updated CSS for slime-themed styling with images */
         body {
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
@@ -20,36 +20,13 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 0.5s ease-out; /* Fade-in animation */
-        }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
         h1, h2, h3 {
             color: #6aff6a; /* Bright green headings */
             text-align: center;
-            animation: fadeInUp 0.5s ease-out; /* Fade-in and slide-up animation */
-        }
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
         p {
             margin-bottom: 15px;
-            animation: fadeIn 0.5s ease-out; /* Fade-in animation */
         }
         ul {
             list-style-type: none;
@@ -57,7 +34,6 @@
         }
         ul li {
             margin-bottom: 10px;
-            animation: fadeIn 0.5s ease-out; /* Fade-in animation */
         }
         a {
             color: #00e600; /* Bright green links */
@@ -68,6 +44,19 @@
             text-decoration: underline;
             color: #4bff4b; /* Lighter green on hover */
         }
+        .slime-border {
+            border: 10px solid #6aff6a; /* Slime green border */
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .slime-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
 <body>
@@ -76,6 +65,9 @@
             <h1>Welcome to Slimecrew Frontier</h1>
         </header>
         <section>
+            <div class="slime-border">
+                <img src="https://via.placeholder.com/600x400" alt="Slime Image" class="slime-img">
+            </div>
             <h2>Description</h2>
             <p>Discover an immersive Minecraft experience with Slimecrew Frontier, powered by the NeoForged mod loader. Explore sprawling landscapes and intricate structures crafted by top-tier mods from YUNG and other creators. Encounter new mobs, embark on quests, and master custom recipes. With innovations like Framed Blocks, Sophisticated Backpacks, and Refined Storage, redefine storage and automation. Experience enhanced world generation across all dimensions, centered around the innovative Create mod and its addons, enhancing your Vanilla Minecraft adventure.</p>
         </section>
