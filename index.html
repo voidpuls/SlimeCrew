@@ -113,6 +113,21 @@
         .navbar a:hover {
             color: #6aff6a; /* Bright green on hover */
         }
+        /* Dark mode button */
+        .dark-mode-toggle {
+            cursor: pointer;
+            background-color: #333; /* Dark background for button */
+            color: #fff; /* White text */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .dark-mode-toggle:hover {
+            background-color: #6aff6a; /* Bright green on hover */
+            color: #fff; /* White text on hover */
+        }
         /* Dark mode styles */
         body.dark-mode {
             background-color: #333; /* Dark background */
@@ -141,7 +156,7 @@
 <body>
     <div class="container">
         <!-- Dark mode toggle -->
-        <div class="dark-mode-toggle" onclick="toggleDarkMode()">Dark Mode</div>
+        <button class="dark-mode-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
         
         <!-- Navbar -->
         <div class="navbar">
@@ -167,10 +182,28 @@
             <h2>Included Content</h2>
             <div class="mod-list">
                 <h3>Mods from CurseForge:</h3>
-                <ul>
-                    <li><a href="https://www.curseforge.com/minecraft/mc-mods/allthecompressed">AllTheCompressed</a> - Compact everything!</li>
-                    <!-- More mod links -->
-                </ul>
+            <ul>
+                <li><a href="https://www.curseforge.com/minecraft/mc-mods/allthecompressed">AllTheCompressed</a> - Compact everything!</li>
+                <li><a href="https://www.curseforge.com/minecraft/mc-mods/apotheosis">Apotheosis</a> - Enhance your Minecraft experience.</li>
+                <li><a href="https://www.curseforge.com/minecraft/mc-mods/aquaculture">Aquaculture 2</a> - Dive into the deep sea for new resources.</li>
+                <li><a href="https://www.curseforge.com/minecraft/mc-mods/chimes">Chimes</a> - Add musical instruments to your game.</li>
+                <li><a href="https://www.curseforge.com/minecraft/mc-mods/chisels-bits">Chisels and Bits</a> - Customize blocks with precision.</li>
+                <li><a href="https://www.curseforge.com/minecraft/mc-mods/crash-utilities">Crash Utilities</a> - Prepare for the unexpected.</li>
+                <li><a href="https://www.curseforge.com/minecraft/mc-mods/create">Create</a> - Innovate with mechanical contraptions.</li>
+                <li><a href="https://www.curseforge.com/minecraft/mc-mods/create-compressed">Create Compressed</a> - Compress your creations.</li>
+                <li><a href="https://www.curseforge.com/minecraft/mc-mods/create-confectionery">Create Confectionery</a> - Satisfy your sweet tooth.</li>
+                <li><a href="https://www.curseforge.com/minecraft/mc-mods/create-design-n-decor">Create Design n' Decor</a> - Beautify your builds.</li>
+                <li><a href="https://www.curseforge.com/minecraft/mc-mods/groovymodloader">GroovyModLoader (GML)</a> - Add a touch of groove to your game.</li>
+                <li><a href="https://www.curseforge.com/minecraft/mc-mods/krypton">Krypton Reforged</a> - Forged from the stars.</li>
+                <li><a href="https://www.curseforge.com/minecraft/mc-mods/kubejs-delight">KubeJS Delight</a> - Delight in JavaScript modding.</li>
+                <li><a href="https://www.curseforge.com/minecraft/mc-mods/ore-excavation">Ore Excavation</a> - Mine ores efficiently.</li>
+                <li><a href="https://www.curseforge.com/minecraft/mc-mods/placebo">Placebo</a> - Enhance your Minecraft experience.</li>
+                <li><a href="https://www.curseforge.com/minecraft/mc-mods/sophisticated-backpacks">Sophisticated Backpacks</a> - Carry your items in style.</li>
+                <li><a href="https://www.curseforge.com/minecraft/mc-mods/sophisticated-core">Sophisticated Core</a> - The heart of sophistication.</li>
+                <li><a href="https://www.curseforge.com/minecraft/mc-mods/sophisticated-storage">Sophisticated Storage</a> - Store your items with finesse.</li>
+                <li><a href="https://www.curseforge.com/minecraft/mc-mods/time-in-a-bottle">Time In A Bottle</a> - Control time itself.</li>
+                <li><a href="https://www.curseforge.com/minecraft/mc-mods/when-dungeons-arise">When Dungeons Arise</a> - Prepare for adventure.</li>
+            </ul>
                 <h3>Resource Packs:</h3>
                 <ul>
                     <li><a href="https://www.curseforge.com/minecraft/texture-packs/faithful-32x">Faithful 32x</a> - Stay faithful to your textures.</li>
