@@ -1,277 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slimecrew Frontier Modpack</title>
-    <style>
-        /* Common styling */
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #d1ffd3; /* Light green background */
-            color: #333;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        .container {
-            width: 100%;
-            padding: 20px;
-            background-color: #ffffff; /* White container background */
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s ease;
-            box-sizing: border-box;
-        }
-        .logo {
-            text-align: center;
-            margin-bottom: 20px;
-            animation: bounce 2s infinite alternate; /* Animation effect */
-        }
-        .logo img {
-            max-width: 200px; /* Adjust size as needed */
-            height: auto;
-            border-radius: 50%; /* Rounded logo */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        @keyframes bounce {
-            0% {
-                transform: translateY(0);
-            }
-            100% {
-                transform: translateY(-10px); /* Adjust the motion distance */
-            }
-        }
-        h1, h2, h3 {
-            color: #6aff6a; /* Bright green headings */
-            text-align: center;
-        }
-        p {
-            margin-bottom: 15px;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        ul li {
-            margin-bottom: 10px;
-        }
-        a {
-            color: #00e600; /* Bright green links */
-            text-decoration: none;
-            transition: color 0.3s ease; /* Smooth color transition */
-        }
-        a:hover {
-            text-decoration: underline;
-            color: #4bff4b; /* Lighter green on hover */
-        }
-        .slime-border {
-            border: 10px solid #6aff6a; /* Slime green border */
-            border-radius: 10px;
-            padding: 10px;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .slime-img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .mod-list {
-            margin-top: 20px;
-            padding: 10px;
-            border-radius: 10px;
-        }
-        .mod-list h3 {
-            color: #6aff6a; /* Bright green headings */
-            margin-bottom: 10px;
-        }
-        .mod-list ul {
-            columns: 2; /* Split into two columns */
-        }
-        .mod-list li {
-            margin-bottom: 5px;
-        }
-        /* Navbar styles */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #333; /* Dark background for navbar */
-            padding: 10px 20px;
-            border-radius: 0 0 10px 10px;
-            transition: background-color 0.3s ease;
-        }
-        .navbar a {
-            color: #fff; /* White links */
-            text-decoration: none;
-            margin-right: 20px;
-            transition: color 0.3s ease; /* Smooth color transition */
-        }
-        .navbar a:hover {
-            color: #6aff6a; /* Bright green on hover */
-        }
-        /* Dark mode button */
-        .dark-mode-toggle {
-            cursor: pointer;
-            background-color: #333; /* Dark background for button */
-            color: #fff; /* White text */
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        .dark-mode-toggle:hover {
-            background-color: #6aff6a; /* Bright green on hover */
-            color: #fff; /* White text on hover */
-        }
-        /* Dark mode styles */
-        body.dark-mode {
-            background-color: #333; /* Dark background */
-            color: #fff; /* White text */
-        }
-        body.dark-mode .container {
-            background-color: #555; /* Darker background for container in dark mode */
-        }
-        body.dark-mode .navbar {
-            background-color: #666; /* Darker background for navbar in dark mode */
-        }
-        body.dark-mode a {
-            color: #6aff6a; /* Bright green links in dark mode */
-        }
-        body.dark-mode a:hover {
-            color: #4bff4b; /* Lighter green on hover in dark mode */
-        }
-        /* Additional styles for button and slideshow */
-        .download-button {
-            display: inline-block;
-            background-color: #6aff6a;
-            color: #fff;
-            text-decoration: none;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-            margin-top: 20px;
-            text-align: center;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .download-button:hover {
-            background-color: #4bff4b; /* Lighter green on hover */
-        }
-        .slideshow {
-            max-width: 80%;
-            overflow: hidden;
-            position: relative;
-            margin-top: 20px;
-        }
-        .slideshow img {
-            width: 80%;
-            height: auto;
-            display: none;
-        }
-        .slideshow img.active {
-            display: block;
-        }
-    </style>
-    <script>
-        function toggleDarkMode() {
-            const body = document.body;
-            body.classList.toggle('dark-mode');
-        }
-    </script>
-    <script>
-        // Script for slideshow
-        let slideIndex = 0;
-        
-        function showSlides() {
-            const slides = document.getElementsByClassName("slideshow")[0].getElementsByTagName("img");
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            slideIndex++;
-            if (slideIndex > slides.length) {
-                slideIndex = 1;
-            }
-            slides[slideIndex - 1].style.display = "block";
-            setTimeout(showSlides, 3000); // Change image every 3 seconds
-        }
-        document.addEventListener("DOMContentLoaded", function() {
-            showSlides();
-        });
-    </script>
-</head>
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Slimecrew Frontier Modpack</title>
+      <style>/* Common styling */
+         body {
+         font-family: 'Arial', sans-serif;
+         line-height: 1.6;
+         margin: 0;
+         padding: 0;
+         background-color: #d1ffd3; /* Light green background */
+         color: #333;
+         transition: background-color 0.3s ease, color 0.3s ease;
+         }
+         .container {
+         width: 100%;
+         padding: 20px;
+         background-color: #ffffff; /* White container background */
+         border-radius: 10px;
+         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+         transition: background-color 0.3s ease;
+         box-sizing: border-box;
+         }
+         .logo {
+         text-align: center;
+         margin-bottom: 20px;
+         animation: bounce 2s infinite alternate; /* Animation effect */
+         }
+         .logo img {
+         max-width: 200px; /* Adjust size as needed */
+         height: auto;
+         border-radius: 50%; /* Rounded logo */
+         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+         }
+         @keyframes bounce {
+         0% {
+         transform: translateY(0);
+         }
+         100% {
+         transform: translateY(-10px); /* Adjust the motion distance */
+         }
+         }
+         h1, h2, h3 {
+         color: #6aff6a; /* Bright green headings */
+         text-align: center;
+         }
+         p {
+         margin-bottom: 15px;
+         }
+         ul {
+         list-style-type: none;
+         padding: 0;
+         }
+         ul li {
+         margin-bottom: 10px;
+         }
+         a {
+         color: #00e600; /* Bright green links */
+         text-decoration: none;
+         transition: color 0.3s ease; /* Smooth color transition */
+         }
+         a:hover {
+         text-decoration: underline;
+         color: #4bff4b; /* Lighter green on hover */
+         }
+         .slime-border {
+         border: 10px solid #6aff6a; /* Slime green border */
+         border-radius: 10px;
+         padding: 10px;
+         text-align: center;
+         margin-bottom: 20px;
+         }
+         .slime-img {
+         max-width: 100%;
+         height: auto;
+         border-radius: 10px;
+         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+         }
+         .mod-list {
+         margin-top: 20px;
+         padding: 10px;
+         border-radius: 10px;
+         }
+         .mod-list h3 {
+         color: #6aff6a; /* Bright green headings */
+         margin-bottom: 10px;
+         }
+         .mod-list ul {
+         columns: 2; /* Split into two columns */
+         }
+         .mod-list li {
+         margin-bottom: 5px;
+         }
+         /* Navbar styles */
+         .navbar {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         background-color: #333; /* Dark background for navbar */
+         padding: 10px 20px;
+         border-radius: 0 0 10px 10px;
+         transition: background-color 0.3s ease;
+         }
+         .navbar a {
+         color: #fff; /* White links */
+         text-decoration: none;
+         margin-right: 20px;
+         transition: color 0.3s ease; /* Smooth color transition */
+         }
+         .navbar a:hover {
+         color: #6aff6a; /* Bright green on hover */
+         }
+         /* Dark mode button */
+         .dark-mode-toggle {
+         cursor: pointer;
+         background-color: #333; /* Dark background for button */
+         color: #fff; /* White text */
+         border: none;
+         padding: 10px 20px;
+         border-radius: 5px;
+         margin-bottom: 10px;
+         transition: background-color 0.3s ease, color 0.3s ease;
+         }
+         .dark-mode-toggle:hover {
+         background-color: #6aff6a; /* Bright green on hover */
+         color: #fff; /* White text on hover */
+         }
+         /* Dark mode styles */
+         body.dark-mode {
+         background-color: #333; /* Dark background */
+         color: #fff; /* White text */
+         }
+         body.dark-mode .container {
+         background-color: #555; /* Darker background for container in dark mode */
+         }
+         body.dark-mode .navbar {
+         background-color: #666; /* Darker background for navbar in dark mode */
+         }
+         body.dark-mode a {
+         color: #6aff6a; /* Bright green links in dark mode */
+         }
+         body.dark-mode a:hover {
+         color: #4bff4b; /* Lighter green on hover in dark mode */
+         }
+         /* Additional styles for button and slideshow */
+         .download-button {
+         display: inline-block;
+         background-color: #6aff6a;
+         color: #fff;
+         text-decoration: none;
+         padding: 15px 30px;
+         font-size: 1.2em;
+         border-radius: 5px;
+         transition: background-color 0.3s ease;
+         margin-top: 20px;
+         text-align: center;
+         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+         }
+         .download-button:hover {
+         background-color: #4bff4b; /* Lighter green on hover */
+         }
+         .slideshow {
+         max-width: 80%;
+         overflow: hidden;
+         position: relative;
+         margin-top: 20px;
+         border: 10px solid #6aff6a; /* Added border */
+         border-radius: 10px; /* Added border radius */
+         }
+         .slideshow img {
+         width: 100%;
+         height: auto;
+         display: none;
+         }
+         .slideshow img.active {
+         display: block;
+         }
+      </style>
+      <script>
+         function toggleDarkMode() {
+             const body = document.body;
+             body.classList.toggle('dark-mode');
+         }
+      </script>
+      <script>
+         // Script for slideshow
+         let slideIndex = 0;
+         
+         function showSlides() {
+             const slides = document.getElementsByClassName("slideshow")[0].getElementsByTagName("img");
+             for (let i = 0; i < slides.length; i++) {
+                 slides[i].style.display = "none";
+             }
+             slideIndex++;
+             if (slideIndex > slides.length) {
+                 slideIndex = 1;
+             }
+             slides[slideIndex - 1].style.display = "block";
+             setTimeout(showSlides, 3000); // Change image every 3 seconds
+         }
+         document.addEventListener("DOMContentLoaded", function() {
+             showSlides();
+         });
+      </script>
+   </head>
    <body>
-         <!-- Dark mode toggle -->
-         <button class="dark-mode-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
-         <!-- Navbar -->
-         <div class="navbar">
-            <a href="https://discord.gg/TUbezwNEU3">Discord</a>
-            <a href="https://modrinth.com/modpack/slimecrew">Modrinth</a>
+      <!-- Dark mode toggle -->
+      <button class="dark-mode-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+      <!-- Navbar -->
+      <div class="navbar">
+         <a href="https://discord.gg/TUbezwNEU3">Discord</a>
+         <a href="https://modrinth.com/modpack/slimecrew">Modrinth</a>
+      </div>
+      <!-- Content sections -->
+      <header>
+         <div class="logo">
+            <img src="logo.png" alt="Slimecrew Frontier Logo">
          </div>
-         <!-- Content sections -->
-         <header>
-            <div class="logo">
-               <img src="logo.png" alt="Slimecrew Frontier Logo">
-            </div>
-            <h1>Welcome to Slimecrew Frontier</h1><script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
-<div class="elfsight-app-0465da0f-a7f9-4996-b36a-8ea7f5225e50" data-elfsight-app-lazy></div>
-         </header>
-         <section>
-            <!-- Slideshow -->
-            <center>
-               <div class="slideshow">
-                  <img src="1.png" alt="Slideshow Image 1" class="active">
-                  <img src="2.png" alt="Slideshow Image 2">
-                  <img src="3.png" alt="Slideshow Image 3">
-                  <img src="4.png" alt="Slideshow Image 4">
-                  <img src="5.png" alt="Slideshow Image 5">
-                  <img src="6.png" alt="Slideshow Image 6">
-                  <img src="7.png" alt="Slideshow Image 7">
-                  <img src="8.png" alt="Slideshow Image 8">
-                  <img src="9.png" alt="Slideshow Image 9">
-                  <img src="10.png" alt="Slideshow Image 10">
-                  <img src="11.png" alt="Slideshow Image 11">
-                  <img src="12.png" alt="Slideshow Image 12">
-                  <img src="13.png" alt="Slideshow Image 13">
-                  <img src="14.png" alt="Slideshow Image 14">
-                  <img src="15.png" alt="Slideshow Image 15">
-                  <img src="16.png" alt="Slideshow Image 16">
-                  <img src="17.png" alt="Slideshow Image 17">
-                  <img src="18.png" alt="Slideshow Image 18">
-                  <img src="19.png" alt="Slideshow Image 19">
-                  <img src="20.png" alt="Slideshow Image 20">
-                  <img src="21.png" alt="Slideshow Image 21">
-                  <img src="22.png" alt="Slideshow Image 22">
-                  <img src="23.png" alt="Slideshow Image 23">
-                  <img src="24.png" alt="Slideshow Image 24">
-                  <img src="25.png" alt="Slideshow Image 25">
-                  <img src="26.png" alt="Slideshow Image 26">
-                  <img src="27.png" alt="Slideshow Image 27">
-                  <img src="28.png" alt="Slideshow Image 28">
-                  <img src="29.png" alt="Slideshow Image 29">
-                  <img src="30.png" alt="Slideshow Image 30">
-                  <img src="31.png" alt="Slideshow Image 31">
-                  <img src="32.png" alt="Slideshow Image 32">
-                  <img src="33.png" alt="Slideshow Image 33">
-                  <img src="34.png" alt="Slideshow Image 34">
-                  <img src="35.png" alt="Slideshow Image 35">
-                  <img src="36.png" alt="Slideshow Image 36">
-                  <img src="37.png" alt="Slideshow Image 37">
-                  <img src="38.png" alt="Slideshow Image 38">
-                  <img src="39.png" alt="Slideshow Image 39">
-                  <img src="40.png" alt="Slideshow Image 40">
-                  <img src="41.png" alt="Slideshow Image 41">
-                  <img src="42.png" alt="Slideshow Image 42">
-                  <img src="43.png" alt="Slideshow Image 43">
-                  <img src="44.png" alt="Slideshow Image 44">      </center>
-               </div>
-
-      <h2>Description</h2>
-      <p>Discover an immersive Minecraft experience with Slimecrew Frontier, powered by the NeoForged mod loader. Explore sprawling landscapes and intricate structures crafted by top-tier mods from YUNG and other creators. Encounter new mobs, embark on quests, and master custom recipes. With innovations like Framed Blocks, Sophisticated Backpacks, and Refined Storage, redefine storage and automation. Experience enhanced world generation across all dimensions, centered around the innovative Create mod and its addons, enhancing your Vanilla Minecraft adventure.</p>
+         <h1>Welcome to Slimecrew Frontier</h1>
+         <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+         <div class="elfsight-app-0465da0f-a7f9-4996-b36a-8ea7f5225e50" data-elfsight-app-lazy></div>
+      </header>
+      <section>
+         <!-- Slideshow -->
+         <center>
+            <div class="slideshow">
+               <img src="1.png" alt="Slideshow Image 1" class="active">
+               <img src="2.png" alt="Slideshow Image 2">
+               <img src="3.png" alt="Slideshow Image 3">
+               <img src="4.png" alt="Slideshow Image 4">
+               <img src="5.png" alt="Slideshow Image 5">
+               <img src="6.png" alt="Slideshow Image 6">
+               <img src="7.png" alt="Slideshow Image 7">
+               <img src="8.png" alt="Slideshow Image 8">
+               <img src="9.png" alt="Slideshow Image 9">
+               <img src="10.png" alt="Slideshow Image 10">
+               <img src="11.png" alt="Slideshow Image 11">
+               <img src="12.png" alt="Slideshow Image 12">
+               <img src="13.png" alt="Slideshow Image 13">
+               <img src="14.png" alt="Slideshow Image 14">
+               <img src="15.png" alt="Slideshow Image 15">
+               <img src="16.png" alt="Slideshow Image 16">
+               <img src="17.png" alt="Slideshow Image 17">
+               <img src="18.png" alt="Slideshow Image 18">
+               <img src="19.png" alt="Slideshow Image 19">
+               <img src="20.png" alt="Slideshow Image 20">
+               <img src="21.png" alt="Slideshow Image 21">
+               <img src="22.png" alt="Slideshow Image 22">
+               <img src="23.png" alt="Slideshow Image 23">
+               <img src="24.png" alt="Slideshow Image 24">
+               <img src="25.png" alt="Slideshow Image 25">
+               <img src="26.png" alt="Slideshow Image 26">
+               <img src="27.png" alt="Slideshow Image 27">
+               <img src="28.png" alt="Slideshow Image 28">
+               <img src="29.png" alt="Slideshow Image 29">
+               <img src="30.png" alt="Slideshow Image 30">
+               <img src="31.png" alt="Slideshow Image 31">
+               <img src="32.png" alt="Slideshow Image 32">
+               <img src="33.png" alt="Slideshow Image 33">
+               <img src="34.png" alt="Slideshow Image 34">
+               <img src="35.png" alt="Slideshow Image 35">
+               <img src="36.png" alt="Slideshow Image 36">
+               <img src="37.png" alt="Slideshow Image 37">
+               <img src="38.png" alt="Slideshow Image 38">
+               <img src="39.png" alt="Slideshow Image 39">
+               <img src="40.png" alt="Slideshow Image 40">
+               <img src="41.png" alt="Slideshow Image 41">
+               <img src="42.png" alt="Slideshow Image 42">
+               <img src="43.png" alt="Slideshow Image 43">
+               <img src="44.png" alt="Slideshow Image 44">      
+         </center>
+         </div>
+         <h2>Description</h2>
+         <p>Discover an immersive Minecraft experience with Slimecrew Frontier, powered by the NeoForged mod loader. Explore sprawling landscapes and intricate structures crafted by top-tier mods from YUNG and other creators. Encounter new mobs, embark on quests, and master custom recipes. With innovations like Framed Blocks, Sophisticated Backpacks, and Refined Storage, redefine storage and automation. Experience enhanced world generation across all dimensions, centered around the innovative Create mod and its addons, enhancing your Vanilla Minecraft adventure.</p>
       </section>
       <section>
          <h2>Included Content</h2>
@@ -312,12 +314,12 @@
             <li>Minecraft: 1.20.1</li>
          </ul>
       </section>
-        <footer>
-            <div class="slime-border">
-                <h3>Join the Adventure!</h3>
-                <a href="https://modrinth.com/modpack/slimecrew" class="download-button">Download Slimecrew Frontier</a>
-            </div>
-        </footer>
-    </div>
+      <footer>
+         <div class="slime-border">
+            <h3>Join the Adventure!</h3>
+            <a href="https://modrinth.com/modpack/slimecrew" class="download-button">Download Slimecrew Frontier</a>
+         </div>
+      </footer>
+      </div>
    </body>
 </html>
