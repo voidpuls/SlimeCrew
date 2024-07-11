@@ -21,6 +21,7 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
         }
         .logo {
             text-align: center;
@@ -101,6 +102,7 @@
             background-color: #333; /* Dark background for navbar */
             padding: 10px 20px;
             border-radius: 0 0 10px 10px;
+            transition: background-color 0.3s ease;
         }
         .navbar a {
             color: #fff; /* White links */
@@ -111,19 +113,13 @@
         .navbar a:hover {
             color: #6aff6a; /* Bright green on hover */
         }
-        /* Dark mode toggle */
-        .dark-mode-toggle {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            cursor: pointer;
-            z-index: 1000;
-            color: #fff; /* White text */
-        }
         /* Dark mode styles */
         body.dark-mode {
             background-color: #333; /* Dark background */
             color: #fff; /* White text */
+        }
+        body.dark-mode .container {
+            background-color: #555; /* Darker background for container in dark mode */
         }
         body.dark-mode .navbar {
             background-color: #666; /* Darker background for navbar in dark mode */
