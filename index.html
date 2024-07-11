@@ -80,7 +80,6 @@
         }
         .mod-list {
             margin-top: 20px;
-            background-color: #f0f0f0; /* Light gray background for mod list */
             padding: 10px;
             border-radius: 10px;
         }
@@ -145,12 +144,63 @@
         body.dark-mode a:hover {
             color: #4bff4b; /* Lighter green on hover in dark mode */
         }
+        /* Additional styles for button and slideshow */
+        .download-button {
+            display: inline-block;
+            background-color: #6aff6a;
+            color: #fff;
+            text-decoration: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .download-button:hover {
+            background-color: #4bff4b; /* Lighter green on hover */
+        }
+        .slideshow {
+            max-width: 100%;
+            overflow: hidden;
+            position: relative;
+            margin-top: 20px;
+        }
+        .slideshow img {
+            width: 100%;
+            height: auto;
+            display: none;
+        }
+        .slideshow img.active {
+            display: block;
+        }
     </style>
     <script>
         function toggleDarkMode() {
             const body = document.body;
             body.classList.toggle('dark-mode');
         }
+    </script>
+    <script>
+        // Script for slideshow
+        let slideIndex = 0;
+
+        function showSlides() {
+            const slides = document.getElementsByClassName("slideshow")[0].getElementsByTagName("img");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 2000); // Change image every 2 seconds
+        }
+        document.addEventListener("DOMContentLoaded", function() {
+            showSlides();
+        });
     </script>
 </head>
 <body>
@@ -221,6 +271,16 @@
             <h2>Explore Slimecrew Frontier</h2>
             <p><a href="https://cdn.modrinth.com/data/u3eBhKdv/versions/L5jaxMDv/SlimeCrew%20Frontier%201.0.0.mrpack">Download the Modpack</a></p>
         </section>
+            <section>
+                <h2>Explore Slimecrew Frontier</h2>
+                <a href="https://cdn.modrinth.com/data/u3eBhKdv/versions/L5jaxMDv/SlimeCrew%20Frontier%201.0.0.mrpack" class="download-button">Download the Modpack</a>
+                <!-- Slideshow -->
+                <div class="slideshow">
+                    <img class="active" src="image1.jpg" alt="Slideshow Image 1">
+                    <img src="image2.jpg" alt="Slideshow Image 2">
+                    <img src="image3.jpg" alt="Slideshow Image 3">
+                </div>
+            </section>
     </div>
 </body>
 </html>
